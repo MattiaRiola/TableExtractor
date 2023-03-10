@@ -10,6 +10,14 @@ import time
 #read list of string from a text file and store them in an array
 
 
+class SearchResult:
+    def __init__(self, title, date,authors,contentType,link,notes):
+        self.title = title
+        self.date = date
+        self.authors = authors
+        self.contentType = contentType
+        self.link = link
+        self.notes = notes
 
 
 with open("urls.txt", "r") as f:
@@ -41,7 +49,7 @@ def extractDataFromHtml(isDate, results, htmlFilePath):
                 if isDate(span.text):
                     date = span.text
                     break
-            res = {"link":link,"title":title,"date":date}
+            res = SearchResult(title=title,date=date,authors="",contentType="google search",link=link,notes="")
             results.append(res)
         except:
             print("discard:")
@@ -58,7 +66,7 @@ def writeCsv(results, csvFilePath):
 
     # Write each list item element to the CSV file
         for res in results:
-            writer.writerow([res.get("title"),res.get("link"),res.get("date")])
+            writer.writerow([res.title, res.date, res.authors, res.contentType, res.link, res.notes])
 
 def isDate(text):
     try:
