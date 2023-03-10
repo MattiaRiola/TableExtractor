@@ -7,3 +7,11 @@ The url of the pages that you want extract is hard coded in the script at the mo
 ## Requirements
 
 You have to put in this folder a file called chromedriver.exe, you can download from google, be sure that the version matches with your chrome installation. For more information read the documentation of selenium.
+
+## Requirements
+
+You have to install python and the following libraries:
+```
+    pip install selenium
+    pip install BeautifulSoup
+```
